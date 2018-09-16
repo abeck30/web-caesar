@@ -1,5 +1,5 @@
 from flask import Flask, request
-from caesar import rotate_character 
+from caesar import rotate_character
 #check to make sure this is correct bc there is no rotate_string function in caesar
 
 app = Flask (__name__)
@@ -47,18 +47,20 @@ def index():
     return form
 
 @app.route("/", methods=['POST'])
-def encrypt(rot,text):
+def encrypt():
     rot = request.form ['rot']
+    rot = int(rot)
     text = request.form ['text']
+    text = str(text)
 
-    encrypted = ''
+    encrypted = ""
     for each_char in text:
         if each_char == '':
             encrypted = encrypted + ''
         else:
             each_char = rotate_character(each_char,rot)
             encrypted = encrypted + each_char
-    return '<h1>'+encrypted+'</h1>'
-   
+
+    return '<h1>'+encrypted+'</h1>'  
 
 app.run()   

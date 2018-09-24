@@ -25,7 +25,7 @@ form = """
           width:540px;
           height: 120px
       }}
-    </style>
+    </style> 
   </head>
 
   <body>
@@ -44,7 +44,7 @@ form = """
 
 @app.route("/")
 def index():
-    return form.format("Enter thing")
+    return form.format("Enter text")
 
 @app.route("/", methods=['POST'])
 def encrypt():
@@ -59,7 +59,7 @@ def encrypt():
             encrypted = encrypted + ''
         else:
             each_char = rotate_character(each_char,rot)
-            encrypted = encrypted + each_char
+            encrypted = encrypted + str(each_char)
 
     return '<h1>'+form.format(encrypted)+'</h1>'  
 
